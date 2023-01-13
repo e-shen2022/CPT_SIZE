@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0,0,100,0);
   transition: 1s;
   width: 50%;
 }
@@ -27,7 +27,7 @@
   <body>
   <table>
     <tr>
-      <td>
+      <td style="text-align: center">
   <div class="card">
     <img src="https://cdn.vox-cdn.com/thumbor/mME2NEhIXqycwnTH5phNitbN8NY=/1000x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/11978695/GRIS___Screen_14.png" alt="Avatar" style="width:100%">
     <div class="container">
@@ -36,7 +36,7 @@
     </div>
   </div>
       </td>
-      <td>
+      <td style="text-align: center">
   <div class="card">
     <img src="https://cdn.vox-cdn.com/thumbor/WlzQdRlCeauNToJe1WEkegBlbYg=/1000x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/11978689/GRIS___Screen_12.png" alt="Avatar" style="width:100%">
     <div class="container">
@@ -47,7 +47,7 @@
       </td>
     </tr>
     <tr>
-      <td>
+      <td style="text-align: center">
   <div class="card">
     <img src="https://cdn.vox-cdn.com/thumbor/31dwE6KoG_TZBMdBFQBUFwQDbJc=/1000x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/11978685/GRIS___Screen_10.png" alt="Avatar" style="width:100%">
     <div class="container">
@@ -56,7 +56,7 @@
     </div>
   </div>
       </td>
-      <td>
+      <td style="text-align: center">
   <div class="card">
     <img src="https://cdn.vox-cdn.com/thumbor/2b1P7xIWEmCzN8PqecLNxEQelhI=/1000x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/11978691/GRIS___Screen_15.png" alt="Avatar" style="width:100%">
     <div class="container">
