@@ -25,60 +25,47 @@
 </style>
 </head>
   <body>
+  <table>
+    <tr>
+      <td>
   <div class="card">
     <img src="https://cdn.vox-cdn.com/thumbor/mME2NEhIXqycwnTH5phNitbN8NY=/1000x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/11978695/GRIS___Screen_14.png" alt="Avatar" style="width:100%">
     <div class="container">
       <a href="https://sanikasha.github.io/superFastPages/" class="btn btn-primary">Sanika</a>
-      <p>DevOps</p> 
+      <p>DevOps</p>
     </div>
   </div>
-
+      </td>
+      <td>
   <div class="card">
     <img src="https://cdn.vox-cdn.com/thumbor/WlzQdRlCeauNToJe1WEkegBlbYg=/1000x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/11978689/GRIS___Screen_12.png" alt="Avatar" style="width:100%">
     <div class="container">
       <a href="https://random-ign.github.io/Fastpages/" class="btn btn-primary">Ishi</a>
-      <p>Frontend Developer</p> 
+      <p>Frontend Developer</p>
     </div>
   </div>
-
+      </td>
+    </tr>
+    <tr>
+      <td>
   <div class="card">
     <img src="https://cdn.vox-cdn.com/thumbor/31dwE6KoG_TZBMdBFQBUFwQDbJc=/1000x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/11978685/GRIS___Screen_10.png" alt="Avatar" style="width:100%">
     <div class="container">
     <a href="https://zeen1717.github.io/zeeeeen/" class="btn btn-primary">Zeen</a>
-      <p>Backend Developer</p> 
+      <p>Backend Developer</p>
     </div>
   </div>
-
+      </td>
+      <td>
   <div class="card">
     <img src="https://cdn.vox-cdn.com/thumbor/2b1P7xIWEmCzN8PqecLNxEQelhI=/1000x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/11978691/GRIS___Screen_15.png" alt="Avatar" style="width:100%">
     <div class="container">
       <a href="https://e-shen2022.github.io/emma_blog/" class="btn btn-primary">Emma</a>
-      <p>Scrum Master</p> 
+      <p>Scrum Master</p>
     </div>
   </div>
-
+      </td>
+    </tr>
+  </table>
   </body>
-</html> 
-
-<!-- <table>
-  <tr>
-    <th>Name</th>
-    <th>Role</th>
-  </tr>
-  <tr>
-    <td>Sanika</td>
-    <td>DevOps</td>
-  </tr>
-  <tr>
-    <td>Ishi</td>
-    <td>Frontend Developer</td>
-  </tr>
-  <tr>
-    <td>Zeen</td>
-    <td>Backend</td>
-  </tr>
-  <tr>
-    <td>Emma</td>
-    <td>Scrum Master</td>
-  </tr>
-</table> -->
+</html>
