@@ -1,6 +1,6 @@
 <h2 style="text-align:center">Team Manifesto</h2>
 
-<img src = "/images/TeamManifesto.jpg" alt = "Team Manifesto">
+<img src = "/CPT_SIZE/images/TeamManifesto.jpg" alt = "Team Manifesto">
 
 <h2 style="text-align:center">Team Members</h2>
 
