@@ -97,3 +97,23 @@
 <p>We strive to provide support to people of all ages with their dermatology needs and improve the condition of their skin and confidence.</p>
 <h3><strong>Function</strong></h3>
 <p>Fill out this quick form about you and your skin type so we can generate personalized recommendations for skin care products</p>
+
+/*
+<table>
+    <tr>
+        <th><label for="name">Name</label></th>
+        <th><label for="email">Email</label></th>
+        <th><label for="skin type">Skin Type</label></th>
+        <th><label for="phone">Phone</label></th>
+    </tr>
+    <tr>
+        <td><input type="text" name="name" id="name" required></td>
+        <td><input type="email" name="email" id="email" placeholder="abc@xyz.org" required></td>
+        <td><input type="skin type" name="skin type" id="skin type" required></td>
+        <td><input type="tel" name="phone_num" id="phone_num"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            placeholder="999-999-9999"></td>
+        <td ><button onclick="create_User()">Create</button></td>
+    </tr>
+</table>
+*/
