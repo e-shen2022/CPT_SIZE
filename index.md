@@ -98,7 +98,6 @@
 <h3><strong>Function</strong></h3>
 <p>Fill out this quick form about you and your skin type so we can generate personalized recommendations for skin care products</p>
 
-/*
 <table>
     <tr>
         <th><label for="name">Name</label></th>
@@ -116,4 +115,3 @@
         <td ><button onclick="create_User()">Create</button></td>
     </tr>
 </table>
-*/
