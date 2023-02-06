@@ -1,3 +1,5 @@
+<h1 style = "text-align:center">About Us!</h1>
+
 <h2 style="text-align:center">Team Manifesto</h2>
 
 <img src = "/images/TeamManifesto.jpg" alt = "Team Manifesto">
