@@ -6,11 +6,19 @@ image: /images/database.png
 
 ---
 
-{% include home.html %}
+<!DOCTYPE html>
+<html>
+<body>
 
-<form action="#" method="get" onsubmit="return false;">
-<input type="text" size="30" name="q" id="q" value="" onkeyup="doSearch();" />
+<p>Enter product you want to find:</p>
+
+<form id="frm1" action="#">
+  Product: <input type="text" name="product"><br>
+  <input type="button" onclick="doSearch()" value="Submit">
 </form>
+
+</body>
+</html>
 
 <p>Database API</p>
 
@@ -155,7 +163,7 @@ image: /images/database.png
 <script type="text/javascript">
 //<!--
 function doSearch() {
-  var product = document.getElementById("product");
+  var product = document.getElementById("frm1");
   var v = q.value.toLowerCase();
   var rows = document.getElementsByTagName("tr");
   var on = 0;
