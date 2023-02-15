@@ -20,18 +20,25 @@ image: /images/database.png
   <tbody id="result">
     <!-- javascript generated data -->
   </tbody>
+  <tr style="display:none;" id="noresults"> 
+ <td>(no listings that start with "<span id="qt"></span>")</td> 
+ </tr>
 </table>
 
 <p>Create API</p>
 
-<form action="javascript:create_client()">
+<form action="javascript:dosearch()">
     <p><label>
         Product:
-        <input type="text" name="uid" id="uid" required>
+        <form action="#" method="get" onsubmit="return false;">
+        <input type="text" name="product" id="product" value="" onkeyup="doSearch();" required>
+        </form>
     </label></p>
     <p><label>
         Allergy:
-        <input type="text" name="name" id="name" required>
+        <form action="#" method="get" onsubmit="return false;">
+        <input type="text" name="product" id="product" value="" onkeyup="doSearch();" required>
+        </form>
     </label></p>
     <p>
         <button>Create</button>
@@ -159,3 +166,33 @@ image: /images/database.png
 
 </script>
 
+
+<script type="text/javascript">
+//<!--
+function doSearch() {
+  var product = document.getElementById("product");
+  var v = q.value.toLowerCase();
+  var rows = document.getElementsByTagName("tr");
+  var on = 0;
+  for ( var i = 0; i < rows.length; i++ ) {
+    var fullname = rows[i].getElementsByTagName("td");
+    fullname = fullname[0].innerHTML.toLowerCase();
+    if ( fullname ) {
+        if ( v.length == 0 || (v.length < 3 && fullname.indexOf(v) == 0) || (v.length >= 3 && fullname.indexOf(v) > -1 ) ) {
+        rows[i].style.display = "";
+        on++;
+      } else {
+        rows[i].style.display = "none";
+      }
+    }
+  }
+  var n = document.getElementById("noresults");
+  if ( on == 0 && n ) {
+    n.style.display = "";
+    document.getElementById("qt").innerHTML = q.value;
+  } else {
+    n.style.display = "none";
+  }
+}
+//-->
+</script>
