@@ -30,7 +30,7 @@ image: /images/database.png
         <input type="text" name="uid" id="uid" required>
     </label></p>
     <p><label>
-        Ingredients:
+        Allergy:
         <input type="text" name="name" id="name" required>
     </label></p>
     <p>
