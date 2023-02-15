@@ -2,7 +2,6 @@
 title: Database CRUD Operations
 layout: default
 description: An advanced example of do database operation asynchronously between JavaScript and Backend Database.
-permalink: /data/database
 image: /images/database.png
 
 ---
