@@ -7,6 +7,8 @@ image: /images/database.png
 
 ---
 
+{% include home.html %}
+
 <p>Database API</p>
 
 <table>
