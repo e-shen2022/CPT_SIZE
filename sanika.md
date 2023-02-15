@@ -7,8 +7,6 @@ image: /images/database.png
 
 ---
 
-{% include nav_data.html %}
-
 <p>Database API</p>
 
 <table>
