@@ -8,6 +8,10 @@ image: /images/database.png
 
 {% include home.html %}
 
+<form action="#" method="get" onsubmit="return false;">
+<input type="text" size="30" name="q" id="q" value="" onkeyup="doSearch();" />
+</form>
+
 <p>Database API</p>
 
 <table>
@@ -25,25 +29,6 @@ image: /images/database.png
  </tr>
 </table>
 
-<p>Create API</p>
-
-<form action="javascript:dosearch()">
-    <p><label>
-        Product:
-        <form action="#" method="get" onsubmit="return false;">
-        <input type="text" name="product" id="product" value="" onkeyup="doSearch();" required>
-        </form>
-    </label></p>
-    <p><label>
-        Allergy:
-        <form action="#" method="get" onsubmit="return false;">
-        <input type="text" name="product" id="product" value="" onkeyup="doSearch();" required>
-        </form>
-    </label></p>
-    <p>
-        <button>Create</button>
-    </p>
-</form>
 
 <script>
   // prepare HTML result container for new output
