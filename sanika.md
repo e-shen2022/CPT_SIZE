@@ -1,7 +1,7 @@
 ---
 title: Database CRUD Operations
 layout: default
-description: An advanced example of do database operation asynchronously between JavaScript and Backend Database.
+description: An advanced example of do database operation asynchronously between JavaScript and Backend Database. help
 image: /images/database.png
 
 ---
@@ -12,10 +12,6 @@ image: /images/database.png
     <p><label>
         Product:
         <input type="text" name="uid" id="uid" required>
-    </label></p>
-    <p><label>
-        Ingredient:
-        <input type="text" name="name" id="name" required>
     </label></p>
     <p>
         <button onclick="searchProd()">Check</button>
