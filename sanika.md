@@ -75,15 +75,16 @@ image: /images/database.png
             resultContainer.appendChild(tr);
             return;
         }
+        if (td = uid);
         // valid response will have json data
-        response.json().then(data => {
-            console.log(data);
-            for (let row in data) {
-              console.log(data[row]);
-              add_row(data[row]);
-            }
-        })
-    })
+          response.json().then(data => {
+              console.log(data);
+              for (let row in data) {
+                onsole.log(data[row]);
+                add_row(data[row]);
+              }
+          })
+      })
     // catch fetch errors (ie ACCESS to server blocked)
     .catch(err => {
       console.error(err);
@@ -147,12 +148,10 @@ image: /images/database.png
 
 
     // add HTML to container
-    if (data.product = uid) {
-      tr.appendChild(product);
-      tr.appendChild(ingredients);
-      resultContainer.appendChild(tr);    
-    }
-    
+    tr.appendChild(product);
+    tr.appendChild(ingredients);
+
+    resultContainer.appendChild(tr);
   }
 
 </script>
