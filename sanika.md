@@ -14,7 +14,7 @@ image: /images/database.png
         <input type="text" name="uid" id="uid" required>
     </label></p>
     <p>
-        <button onclick="searchProd()">Check</button>
+        <button onclick="read_clients()">Check</button>
     </p>
 </form>
 
@@ -32,32 +32,6 @@ image: /images/database.png
     <!-- javascript generated data -->
   </tbody>
 </table>
-
-<script>
-
-  function searchProd() {
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("search");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("results");
-    tr = table.getElementsByTagName("tr");
-
-    // Loop through all table rows, and hide those who don't match the search query
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }
-    }
-  }
-</script>
-  }
-
 
 
 <script>
@@ -173,10 +147,12 @@ image: /images/database.png
 
 
     // add HTML to container
-    tr.appendChild(product);
-    tr.appendChild(ingredients);
-
-    resultContainer.appendChild(tr);
+    if (data.product = uid) {
+      tr.appendChild(product);
+      tr.appendChild(ingredients);
+      resultContainer.appendChild(tr);    
+    }
+    
   }
 
 </script>
