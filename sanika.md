@@ -17,8 +17,6 @@ image: /images/database.png
   <input type="button" onclick="doSearch()" value="Submit">
 </form>
 
-</body>
-</html>
 
 <p>Database API</p>
 
@@ -189,3 +187,6 @@ function doSearch() {
 }
 //-->
 </script>
+
+</body>
+</html>
