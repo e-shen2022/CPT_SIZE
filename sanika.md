@@ -6,10 +6,6 @@ image: /images/database.png
 
 ---
 
-<!DOCTYPE html>
-<html>
-<body>
-
 <p>Enter product you want to find:</p>
 
 <form action="javascript:create_user()">
@@ -164,6 +160,3 @@ image: /images/database.png
   
 </script>
 
-
-</body>
-</html>
