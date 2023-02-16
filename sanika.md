@@ -18,22 +18,21 @@ image: /images/database.png
         <input type="text" name="name" id="name" required>
     </label></p>
     <p>
-        <button>Check</button>
+        <button onclick="searchProd()">Check</button>
     </p>
 </form>
 
-<input type="text" id="search" onkeyup="searchProd()" placeholder="Type to search">
 
 <p>Database API</p>
 
-<table id="prodtable">
+<table>
   <thead>
   <tr>
     <th>Product</th>
     <th>Ingredients</th>
   </tr>
   </thead>
-  <tbody>
+  <tbody id="results">
     <!-- javascript generated data -->
   </tbody>
 </table>
@@ -44,7 +43,7 @@ image: /images/database.png
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("search");
     filter = input.value.toUpperCase();
-    table = document.getElementById("prodtable");
+    table = document.getElementById("results");
     tr = table.getElementsByTagName("tr");
 
     // Loop through all table rows, and hide those who don't match the search query
@@ -67,7 +66,7 @@ image: /images/database.png
 
 <script>
   // prepare HTML result container for new output
-  const resultContainer = document.getElementById("result");
+  const resultContainer = document.getElementById("results");
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "http://localhost:8031/api/clients"
   const url = "http://localhost:8031/api/clients"
