@@ -11,7 +11,7 @@ image: /images/database.png
 <form action="javascript:create_user()">
     <p><label>
         Product:
-        <input type="text" name="uid" id="uid" required>
+        <input type="text" name="product" id="product" required>
     </label></p>
     <p>
         <button onclick="read_clients()">Check</button>
@@ -75,7 +75,7 @@ image: /images/database.png
             resultContainer.appendChild(tr);
             return;
         }
-        if (td = uid);
+        if (td = product);
         // valid response will have json data
           response.json().then(data => {
               console.log(data);
