@@ -12,9 +12,18 @@ image: /images/database.png
 
 <p>Enter product you want to find:</p>
 
-<form id="frm1" action="#">
-  Product: <input type="text" name="product"><br>
-  <input type="button" onclick="doSearch()" value="Submit">
+<form action="javascript:create_user()">
+    <p><label>
+        Product:
+        <input type="text" name="uid" id="uid" required>
+    </label></p>
+    <p><label>
+        Ingredient:
+        <input type="text" name="name" id="name" required>
+    </label></p>
+    <p>
+        <button>Check</button>
+    </p>
 </form>
 
 
@@ -30,10 +39,8 @@ image: /images/database.png
   <tbody id="result">
     <!-- javascript generated data -->
   </tbody>
-  <tr style="display:none;" id="noresults"> 
- <td>(no listings that start with "<span id="qt"></span>")</td> 
- </tr>
 </table>
+
 
 
 <script>
@@ -154,39 +161,9 @@ image: /images/database.png
 
     resultContainer.appendChild(tr);
   }
-
+  
 </script>
 
-
-<script type="text/javascript">
-//<!--
-function doSearch() {
-  var product = document.getElementById("frm1");
-  var v = q.value.toLowerCase();
-  var rows = document.getElementsByTagName("tr");
-  var on = 0;
-  for ( var i = 0; i < rows.length; i++ ) {
-    var fullname = rows[i].getElementsByTagName("td");
-    fullname = fullname[0].innerHTML.toLowerCase();
-    if ( fullname ) {
-        if ( v.length == 0 || (v.length < 3 && fullname.indexOf(v) == 0) || (v.length >= 3 && fullname.indexOf(v) > -1 ) ) {
-        rows[i].style.display = "";
-        on++;
-      } else {
-        rows[i].style.display = "none";
-      }
-    }
-  }
-  var n = document.getElementById("noresults");
-  if ( on == 0 && n ) {
-    n.style.display = "";
-    document.getElementById("qt").innerHTML = q.value;
-  } else {
-    n.style.display = "none";
-  }
-}
-//-->
-</script>
 
 </body>
 </html>
