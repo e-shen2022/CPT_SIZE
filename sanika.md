@@ -80,7 +80,7 @@ image: /images/database.png
           response.json().then(data => {
               console.log(data);
               for (let row in data) {
-                onsole.log(data[row]);
+                console.log(data[row]);
                 add_row(data[row]);
               }
           })
