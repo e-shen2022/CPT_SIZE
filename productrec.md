@@ -1,3 +1,4 @@
+
 <html>
 <body>
 
@@ -61,7 +62,7 @@
   const skin_product_result = document.getElementById("skin_product");
 
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "https://cskinp.duckdns.org/"
+  const url = "https://csp.nighthawkcodingsociety.com/"
   //const url = "https://flask.nighthawkcodingsociety.com/api/skintype"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
@@ -259,26 +260,18 @@
       {
         console.log(eachskinproduct[product_type]);
 
-        if (eachskinproduct[product_type] !== "undefined" )
-        {
-            td.innerHTML = eachskinproduct[product_type];
-            tr.appendChild(td);
-            skin_product_result.appendChild(tr);
-            // We found the skin product, we can return now
-            return;
-        }
-        else
-        {
-            //if skin product is not avaliable 
-            td.innerHTML = "Can not find your skin product, please try again!";
-            tr.appendChild(td);
-            skin_product_result.appendChild(tr);
-        }
+        td.innerHTML = eachskinproduct[product_type];
+        tr.appendChild(td);
+
+        skin_product_result.appendChild(tr);
+
+        // We found the skin product, we can return now
+        return;
       }
     }
 
-    // If skin type is not avaliable 
-    td.innerHTML = "Can not find your skin type, please try again!";
+    // If we get here, we didn't find the skin product
+    td.innerHTML = "Can not find your skin product, please try again!";
     tr.appendChild(td);
     skin_product_result.appendChild(tr);
   }
