@@ -55,8 +55,8 @@ function searchProd() {
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("results");
   // prepare URL's to allow easy switch from deployment and localhost
-  //const url = "http://localhost:8031/api/clients"
-  const url = "http://localhost:8031/api/clients"
+  //const url = "https://cskinp.duckdns.org/"
+  const url = "https://cskinp.duckdns.org/"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 
