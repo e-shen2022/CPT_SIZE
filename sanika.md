@@ -26,7 +26,7 @@ function searchProd() {
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "Contains allergen";
+        console.log("Allergen is present");
       } else {
         tr[i].style.display = "none";
       }
