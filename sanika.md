@@ -15,7 +15,8 @@ image: /images/database.png
       }
     </style>
   </head>
-<html>
+  <body>
+
 
 <p>Enter product you want to find:</p>
 
@@ -40,6 +41,9 @@ userInput.addEventListener("input", function() {
 
   // Loop through all table rows and cells
   for (var i = 0; i < table.rows.length; i++) {
+    var row = table.rows[i];
+    var matchFound = false;
+
     for (var j = 0; j < table.rows[i].cells.length; j++) {
       // Check if the cell contains the desired string
       if (table.rows[i].cells[j].textContent.includes(searchString)) {
@@ -71,6 +75,8 @@ userInput.addEventListener("input", function() {
 
 }
 </script>
+</body>
+</html>
 
 
 <script>
