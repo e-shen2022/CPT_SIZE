@@ -61,7 +61,7 @@
   const skin_product_result = document.getElementById("skin_product");
 
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "https://cskinp.duckdns.org/"
+  const url = "https://flask.nighthawkcodingsociety.com/api/skintype"
   //const url = "https://flask.nighthawkcodingsociety.com/api/skintype"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
