@@ -6,6 +6,17 @@ image: /images/database.png
 
 ---
 
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      tr.match {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+<html>
+
 <p>Enter product you want to find:</p>
 
 <input type="text" id="userInput" onkeyup="findAllergy()" placeholder="Search for product..">
@@ -38,13 +49,15 @@ userInput.addEventListener("input", function() {
         break;
       }
     }
-  }
 
-  if (matchFound) {
-    row.style.display = "";
-  } else {
-    row.style.displau = "none";
-  }  
+// new
+    if (matchFound) {
+      row.classList.add("match");
+    } else {
+      row.classList.remove("match")
+    }
+    }
+//endnew
   
 
   // Display which row(s) contain the search string
