@@ -33,10 +33,18 @@ userInput.addEventListener("input", function() {
       if (table.rows[i].cells[j].textContent.includes(searchString)) {
         // If the string is found, add the row number to the matchingRows array
         matchingRows.push(i);
+        matchFound = true;
         break;
       }
     }
   }
+
+  if (matchFound) {
+    row.style.display = "";
+  } else {
+    row.style.displau = "none";
+  }  
+  
 
   // Display which row(s) contain the search string
   var out = document.getElementById("out");
