@@ -11,7 +11,7 @@ image: /images/database.png
   <head>
     <style>
       tr.match {
-        background-color: yellow;
+        background-color: maroon;
       }
     </style>
   </head>
