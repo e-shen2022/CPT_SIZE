@@ -18,6 +18,7 @@ function findAllergy() {
 var table = document.getElementById("results");
 var userInput = document.getElementById("userInput");
 
+
 // Listen for changes to the search input element
 userInput.addEventListener("input", function() {
   // Get the value of the search input
