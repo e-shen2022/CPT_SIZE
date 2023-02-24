@@ -8,7 +8,48 @@ image: /images/database.png
 
 <p>Enter product you want to find:</p>
 
-<input type="text" id="userInput" onkeyup="searchProd()" placeholder="Search for product..">
+<input type="text" id="userInput" onkeyup="findAllergy()" placeholder="Search for product..">
+
+<p id="out"></p>
+
+<script>
+function findAllergy() {
+  // Get the table element and search input element
+var table = document.getElementById("results");
+var userInput = document.getElementById("userInput");
+
+// Listen for changes to the search input element
+userInput.addEventListener("input", function() {
+  // Get the value of the search input
+  var searchString = userInput.value.trim();
+
+  // Initialize array to store row numbers of matching rows
+  var matchingRows = [];
+
+  // Loop through all table rows and cells
+  for (var i = 0; i < table.rows.length; i++) {
+    for (var j = 0; j < table.rows[i].cells.length; j++) {
+      // Check if the cell contains the desired string
+      if (table.rows[i].cells[j].textContent.includes(searchString)) {
+        // If the string is found, add the row number to the matchingRows array
+        matchingRows.push(i);
+        break;
+      }
+    }
+  }
+
+  // Display which row(s) contain the search string
+  var out = document.getElementById("out");
+  if (matchingRows.length > 0) {
+    out.textContent = "The string '" + searchString + "' was found in row(s): " + matchingRows.join(", ");
+  } else {
+    out.textContent = "The string '" + searchString + "' was not found in any row.";
+  }
+});
+
+}
+</script>
+
 
 <script>
 function searchProd() {
