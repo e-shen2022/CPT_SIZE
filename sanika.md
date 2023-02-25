@@ -124,7 +124,7 @@ function searchProd() {
   const resultContainer = document.getElementById("results");
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "https://cskinp.duckdns.org/api/clients"
-  const url = "http://192.168.1.103:8080/api/clients/"
+  const url = "https://cskinp.duckdns.org/api/clients"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 
