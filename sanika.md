@@ -6,7 +6,7 @@ image: /images/database.png
 
 ---
 
-<!DOCTYPE html>
+
 <html>
   <head>
     <style>
