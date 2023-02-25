@@ -26,13 +26,13 @@ image: /images/database.png
 
 <script>
 function findAllergy() {
-  // Get the table element and search input element
-var table = document.getElementById("results");
+
+// id set to table (which fetches database) and input, defined for iteration
+var data = document.getElementById("results");
 var userInput = document.getElementById("userInput");
 
-
 // Listen for changes to the search input element
-userInput.addEventListener("input", function() {
+userInput.addEventListener("userInput", findAllergy() {
   // Get the value of the search input
   var searchString = userInput.value.trim();
 
@@ -40,13 +40,13 @@ userInput.addEventListener("input", function() {
   var matchingRows = [];
 
   // Loop through all table rows and cells
-  for (var i = 0; i < table.rows.length; i++) {
-    var row = table.rows[i];
+  for (var i = 0; i < data.rows.length; i++) {
+    var row = data.rows[i];
     var matchFound = false;
 
-    for (var j = 0; j < table.rows[i].cells.length; j++) {
+    for (var j = 0; j < data.rows[i].cells.length; j++) {
       // Check if the cell contains the desired string
-      if (table.rows[i].cells[j].textContent.includes(searchString)) {
+      if (data.rows[i].cells[j].textContent.includes(searchString)) {
         // If the string is found, add the row number to the matchingRows array
         matchingRows.push(i);
         matchFound = true;
