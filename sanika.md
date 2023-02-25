@@ -26,13 +26,13 @@ image: /images/database.png
 
 <script>
 function findAllergy() {
-
-// id set to table (which fetches database) and input, defined for iteration
-var data = document.getElementById("results");
+  // Get the table element and search input element
+var table = document.getElementById("results");
 var userInput = document.getElementById("userInput");
 
+
 // Listen for changes to the search input element
-userInput.addEventListener("userInput", findAllergy() {
+userInput.addEventListener("input", function() {
   // Get the value of the search input
   var searchString = userInput.value.trim();
 
@@ -40,13 +40,13 @@ userInput.addEventListener("userInput", findAllergy() {
   var matchingRows = [];
 
   // Loop through all table rows and cells
-  for (var i = 0; i < data.rows.length; i++) {
-    var row = data.rows[i];
+  for (var i = 0; i < table.rows.length; i++) {
+    var row = table.rows[i];
     var matchFound = false;
 
-    for (var j = 0; j < data.rows[i].cells.length; j++) {
+    for (var j = 0; j < table.rows[i].cells.length; j++) {
       // Check if the cell contains the desired string
-      if (data.rows[i].cells[j].textContent.includes(searchString)) {
+      if (table.rows[i].cells[j].textContent.includes(searchString)) {
         // If the string is found, add the row number to the matchingRows array
         matchingRows.push(i);
         matchFound = true;
@@ -124,7 +124,7 @@ function searchProd() {
   const resultContainer = document.getElementById("results");
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "https://cskinp.duckdns.org/api/clients"
-  const url = "http://192.168.1.103:8080/api/clients"
+  const url = "https://cskinp.duckdns.org/api/clients"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 
