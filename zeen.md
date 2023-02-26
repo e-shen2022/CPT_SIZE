@@ -1,5 +1,3 @@
-### Serum
-
 <html>
 <body>
 <form id="uinput" action="#">
@@ -9,8 +7,6 @@
   <input type=button onclick="allergyCheck()" value="Submit">
 </form>
 </body>
-
-
 
 <p>Database API</p>
 
