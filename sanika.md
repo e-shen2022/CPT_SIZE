@@ -368,3 +368,7 @@ function allergyCheck()
 }  
             
 </script>
+
+
+                    console.log(speccells[k].innerText.toLowerCase());
+                    console.log(allergyl);
