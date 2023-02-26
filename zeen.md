@@ -47,15 +47,15 @@ function allergyCheck() {
                 var rowIndex = i;
                 var prodrow = table.rows[rowIndex];
                 var specrow = document.querySelector(`#results tr:nth-child(${i+1})`);
-                var speccells = specrow.querySelectorAll("td");
+                var speccell = specrow.cells[1]
 
-                for (var k = 0; k < speccells.length; k++) {
+                for (var k = 0; k < speccell.length; k++) {
                     const prodcell = prodrow.cells[k];
 //it is currently checking the wrong column
-                    console.log(speccells[k].innerText.toLowerCase());
+                    console.log(speccell[k].innerText.toLowerCase());
                     console.log(allergyl);
 //how to make it check the right colum (k===1 not working)
-                    if (k === 2 && speccells[k].innerText.toLowerCase().includes(allergyl)) {
+                    if (speccell[k].innerText.toLowerCase().includes(allergyl)) {
                         console.log('this product is unsafe, return to product selection');
                         return;
                     } else {
