@@ -43,7 +43,7 @@ function allergyCheck()
         for (var j = 0; j < row.cells.length; j++) {
             const cell = row.cells[j];
 
-            if (cell.innerText.toLowerCase().includes(product)) {
+            if (cell.innerText.toLowerCase().includes(productl)) {
                 console.log(`product found in row ${i}`);
                 var rowIndex = i;
                 var prodrow = table.rows[rowIndex];
