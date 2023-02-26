@@ -11,7 +11,6 @@
 </body>
 
 
-
 <p>Database API</p>
 
 <table>
@@ -60,8 +59,8 @@ function allergyCheck() {
                     return;
                 }
             }
-        } else {
-            console.log('product not in our database');
+            } else {
+                console.log('product not in our database');
         }
     }
 }
