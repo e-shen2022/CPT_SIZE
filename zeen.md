@@ -60,6 +60,7 @@ function allergyCheck() {
                 }
             } else {
                 console.log('product not in our database');
+            }
         }
     }
 }
