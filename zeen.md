@@ -26,6 +26,7 @@
 </table>
 
 
+
 <script>
 const table = document.getElementById('results');
 const productIn = document.getElementById('product');
@@ -45,18 +46,22 @@ function allergyCheck() {
                 console.log(`product found in row ${i}`);
                 var rowIndex = i;
                 var prodrow = table.rows[rowIndex];
-                var specrow = document.querySelector(`#results tr:nth-child(${i})`);
-                var speccell = specrow.cell[1]
+                var specrow = document.querySelector(`#results tr:nth-child(${i+1})`);
+                var speccells = specrow.querySelectorAll("td");
+
+                for (var k = 1; k < speccells.length; k++) {
+                    const prodcell = prodrow.cells[k];
 //it is currently checking the wrong column
-                console.log(speccell.innerText.toLowerCase());
-                console.log(allergyl);
+                    console.log(speccells[k].innerText.toLowerCase());
+                    console.log(allergyl);
 //how to make it check the right colum (k===1 not working)
-                if (speccell.innerText.toLowerCase().includes(allergyl)) {
-                    console.log('this product is unsafe, return to product selection');
-                    return;
-                } else {
-                    console.log('this product is safe for use! enjoy!');
-                    return;
+                    if (speccells[k].innerText.toLowerCase().includes(allergyl)) {
+                        console.log('this product is unsafe, return to product selection');
+                        return;
+                    } else {
+                        console.log('this product is safe for use! enjoy!');
+                        return;
+                    }
                 }
             } else {
                 console.log('product not in our database');
@@ -64,9 +69,9 @@ function allergyCheck() {
         }
     }
 }
-
             
 </script>
+
 
 
 <script>
