@@ -1,12 +1,14 @@
 ### Serum
 
 <html>
+<body>
 <form id="uinput" action="#">
   Allergy: <input type="text" name="allergy"
   id="allergy"><br>
   Product: <input type="text" name="product" id="product"><br>
   <input type=button onclick="allergyCheck()" value="Submit">
 </form>
+</body>
 
 <script>
 const table = document.getElementById('results');
@@ -27,12 +29,12 @@ function allergyCheck()
             if (cell.innerText.toLowerCase().includes(product)) {
                 console.log(`product found in row ${i}`);
                 var rowIndex = i;
-                var row = table.rows[rowIndex];
+                var prodrow = table.rows[rowIndex];
 
-                for (let b = 0; b < row.cells.length; b++) {
-                    const cell = row.cells[b];
+                for (let b = 0; b < prodrow.cells.length; b++) {
+                    const prodcell = prodrow.cells[b];
 
-                    if (cell.innerText.toLowerCase().includes(allergy)) {
+                    if (prodcell.innerText.toLowerCase().includes(allergy)) {
                         console.log('this product is unsafe, return to product selection');
                         return;
                     } else {
@@ -48,6 +50,7 @@ function allergyCheck()
 }  
             
 </script>
+</html>
 
 <p>Database API</p>
 
