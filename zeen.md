@@ -1,12 +1,9 @@
-### Serum
-
 <html>
 <body>
 <form id="uinput" action="#">
-  Allergy: <input type="text" name="allergy"
-  id="allergy"><br>
+  Allergy: <input type="text" name="allergy" id="allergy"><br>
   Product: <input type="text" name="product" id="product"><br>
-  <input type=button onclick="allergyCheck()" value="Submit">
+  <input type="button" onclick="allergyCheck()" value="Submit">
 </form>
 </body>
 
@@ -15,11 +12,10 @@ const table = document.getElementById('results');
 const productIn = document.getElementById('product');
 const allergyIn = document.getElementById('allergy');
 
-function allergyCheck()
-{
+function allergyCheck() {
     var allergy = allergyIn.value.toLowerCase();
     var product = productIn.value.toLowerCase();
-    
+
     for (var i = 0; i < table.rows.length; i++) {
         const row = table.rows[i];
 
@@ -28,8 +24,7 @@ function allergyCheck()
 
             if (cell.innerText.toLowerCase().includes(product)) {
                 console.log(`product found in row ${i}`);
-                var rowIndex = i;
-                var prodrow = table.rows[rowIndex];
+                var prodrow = table.rows[i];
 
                 for (let b = 0; b < prodrow.cells.length; b++) {
                     const prodcell = prodrow.cells[b];
@@ -42,15 +37,14 @@ function allergyCheck()
                         return;
                     }
                 }
-            } else {
-                console.log('product not in our database');
             }
         }
     }
+    
+    console.log('product not in our database');
 }  
-            
 </script>
-</html>
+
 
 <p>Database API</p>
 
