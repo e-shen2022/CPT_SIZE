@@ -45,12 +45,12 @@ function allergyCheck()
             if (cell.innerText.toLowerCase().includes(product)) {
                 console.log(`product found in row ${i}`);
                 var rowIndex = i;
-                var prodrow = table.rows[rowIndex];
+                var row = table.rows[rowIndex];
 
-                for (let b = 0; b < prodrow.cells.length; b++) {
-                    const prodcell = prodrow.cells[b];
+                for (let b = 0; b < row.cells.length; b++) {
+                    const cell = row.cells[b];
 
-                    if (prodcell.innerText.toLowerCase().includes(allergy)) {
+                    if (cell.innerText.toLowerCase().includes(allergy)) {
                         console.log('this product is unsafe, return to product selection');
                         return;
                     } else {
@@ -63,8 +63,8 @@ function allergyCheck()
             }
         }
     }
-}  
-            
+}                
+
 </script>
 
 
