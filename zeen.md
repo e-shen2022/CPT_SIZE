@@ -47,11 +47,13 @@ function allergyCheck()
                 console.log(`product found in row ${i}`);
                 var rowIndex = i;
                 var prodrow = table.rows[rowIndex];
+                var specrow = document.querySelector("#results tr:nth-child(${i})");
+                var speccells = specrow.querySelectorAll("td");
 
-                for (let b = 0; b < prodrow.cells.length; b++) {
-                    const prodcell = prodrow.cells[b];
+                for (var k = 0; k < speccells.length; k++) {
+                    const prodcell = prodrow.cells[i];
 
-                    if (prodcell.innerText.toLowerCase().includes(allergy)) {
+                    if (speccells[i].innerText.toLowerCase().includes(allergyl)) {
                         console.log('this product is unsafe, return to product selection');
                         return;
                     } else {
