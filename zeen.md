@@ -47,7 +47,7 @@ function allergyCheck()
                 console.log(`product found in row ${i}`);
                 var rowIndex = i;
                 var prodrow = table.rows[rowIndex];
-                var specrow = document.querySelector("#results tr:nth-child(${i})");
+                var specrow = document.querySelector('#results tr:nth-child(${i})');
                 var speccells = specrow.querySelectorAll("td");
 
                 for (var k = 0; k < speccells.length; k++) {
