@@ -46,7 +46,7 @@ function allergyCheck() {
                 var rowIndex = i;
                 var prodrow = table.rows[rowIndex];
                 var specrow = document.querySelector(`#results tr:nth-child(${i+1})`);
-                var speccell = specrow.cells[1]
+                var speccell = specrow.cell[1]
 //it is currently checking the wrong column
                 console.log(speccell.innerText.toLowerCase());
                 console.log(allergyl);
@@ -58,7 +58,6 @@ function allergyCheck() {
                     console.log('this product is safe for use! enjoy!');
                     return;
                 }
-            }
             } else {
                 console.log('product not in our database');
         }
