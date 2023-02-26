@@ -15,11 +15,13 @@ const allergyIn = document.getElementById('allergy');
 function allergyCheck() {
     var allergy = allergyIn.value.toLowerCase();
     var product = productIn.value.toLowerCase();
+    var rowcount = table.rows.length;
+    var cellcount = row.cells.length
 
-    for (var i = 0; i < table.rows.length; i++) {
+    for (var i = 0; i < rowcount; i++) {
         const row = table.rows[i];
 
-        for (var j = 0; j < row.cells.length; j++) {
+        for (var j = 0; j < cellcount; j++) {
             const cell = row.cells[j];
 
             if (cell.innerText.toLowerCase().includes(product)) {
