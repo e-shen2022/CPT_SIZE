@@ -416,3 +416,46 @@ function allergyCheck() {
 }
             
 </script>
+
+
+
+//diff column try
+<script>
+const table = document.getElementById('results');
+const productIn = document.getElementById('product');
+const allergyIn = document.getElementById('allergy');
+
+function allergyCheck() {
+    var allergyl = allergyIn.value.toLowerCase();
+    var productl = productIn.value.toLowerCase();
+    
+    for (var i = 0; i < table.rows.length; i++) {
+        const row = table.rows[i];
+
+        for (var j = 0; j < row.cells.length; j++) {
+            const cell = row.cells[j];
+
+            if (cell.innerText.toLowerCase().includes(productl)) {
+                console.log(`product found in row ${i}`);
+                var specrow = document.querySelector(`#results tr:nth-child(${i})`);
+                var speccell = specrow.cell[1]
+//it is currently checking the wrong column
+                console.log(speccell.innerText.toLowerCase());
+                console.log(allergyl);
+//how to make it check the right colum (k===1 not working)
+                if (speccell.innerText.toLowerCase().includes(allergyl)) {
+                    console.log('this product is unsafe, return to product selection');
+                    return;
+                } else {
+                    console.log('this product is safe for use! enjoy!');
+                    return;
+                }
+            } else {
+                console.log('product not in our database');
+            }
+        }
+    }
+}
+
+            
+</script>
