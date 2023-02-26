@@ -1,3 +1,5 @@
+### Serum
+
 <html>
 <body>
 <form id="uinput" action="#">
@@ -7,6 +9,8 @@
   <input type=button onclick="allergyCheck()" value="Submit">
 </form>
 </body>
+
+
 
 <p>Database API</p>
 
@@ -22,48 +26,47 @@
   </tbody>
 </table>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function(event) {
-      const table = document.getElementById('results');
-      const productIn = document.getElementById('product');
-      const allergyIn = document.getElementById('allergy');
 
-      function allergyCheck() {
-        var allergy = allergyIn.value.toLowerCase();
-        var product = productIn.value.toLowerCase();
+<script>
+const table = document.getElementById('results');
+const productIn = document.getElementById('product');
+const allergyIn = document.getElementById('allergy');
 
-        for (var i = 0; i < table.rows.length; i++) {
-          const row = table.rows[i];
+function allergyCheck()
+{
+    var allergyl = allergyIn.value.toLowerCase();
+    var productl = productIn.value.toLowerCase();
+    
+    for (var i = 0; i < table.rows.length; i++) {
+        const row = table.rows[i];
 
-          for (var j = 0; j < row.cells.length; j++) {
+        for (var j = 0; j < row.cells.length; j++) {
             const cell = row.cells[j];
 
             if (cell.innerText.toLowerCase().includes(product)) {
-              console.log(`product found in row ${i}`);
-              var rowIndex = i;
-              var prodrow = table.rows[rowIndex];
+                console.log(`product found in row ${i}`);
+                var rowIndex = i;
+                var prodrow = table.rows[rowIndex];
 
-              for (let b = 0; b < prodrow.cells.length; b++) {
-                const prodcell = prodrow.cells[b];
+                for (let b = 0; b < prodrow.cells.length; b++) {
+                    const prodcell = prodrow.cells[b];
 
-                if (prodcell.innerText.toLowerCase().includes(allergy)) {
-                  console.log('this product is unsafe, return to product selection');
-                  return;
-                } else {
-                  console.log('this product is safe for use! enjoy!');
-                  return;
+                    if (prodcell.innerText.toLowerCase().includes(allergy)) {
+                        console.log('this product is unsafe, return to product selection');
+                        return;
+                    } else {
+                        console.log('this product is safe for use! enjoy!');
+                        return;
+                    }
                 }
-              }
             } else {
-              console.log('product not in our database');
+                console.log('product not in our database');
             }
-          }
         }
-      }
-    });
-  </script>
-</body>
-</html>
+    }
+}  
+            
+</script>
 
 
 <script>
