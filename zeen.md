@@ -45,7 +45,7 @@ function allergyCheck() {
                 console.log(`product found in row ${i}`);
                 var rowIndex = i;
                 var prodrow = table.rows[rowIndex];
-                var specrow = document.querySelector(`#results tr:nth-child(${i+1})`);
+                var specrow = document.querySelector(`#results tr:nth-child(${i})`);
                 var speccell = specrow.cell[1]
 //it is currently checking the wrong column
                 console.log(speccell.innerText.toLowerCase());
