@@ -56,15 +56,15 @@ function allergyCheck() {
                     console.log(allergyl);
 //how to make it check the right colum (k===1 not working)
                     if (speccells[k].innerText.toLowerCase().includes(allergyl)) {
-                        console.log('this product is unsafe, return to product selection');
+                        document.write('this product is unsafe, return to product selection');
                         return;
                     } else {
-                        console.log('this product is safe for use! enjoy!');
+                        document.write('this product is safe for use! enjoy!');
                         return;
                     }
                 }
             } else {
-                console.log('product not in our database');
+                document.write('product not in our database');
             }
         }
     }
