@@ -1,7 +1,7 @@
 <html>
 <body>
 
-<!--Display entire skin product data base here -->
+<!--Manually create column headers for the data table displayed on the website -->
 <table>
   <thead>
   <tr>
@@ -12,35 +12,36 @@
     <th>Sunscreen</th>
   </tr>
   </thead>
+  <!--Generate database and put it in "result" id-->
   <tbody id="result">
-    <!-- javascript generated the database and put it in "result" id -->
   </tbody>
   <tr style="display:none;" id="noresults">
  </tr>
 </table>
-
+<!--Displayed instructions for user input-->
 <p>Please enter your skin type and product type, we will find your match:</p>
 
 <form id="myForm1" action="#">
+  <!--Take user skin type and save in "skin_type" id & take user product type and save in "product_type" id-->
   Skin Type: <input type="text" name="skin_type" id="skin_type"><br>
   Skin Product Type: <input type="text" name="product_type" id="product_type"><br>
   <input type="button" onclick="findSkinProduct()" value="Submit">
 </form>
 
-<!--Show found skin product result based on skin type and product type input by user -->
 <table>
   <thead>
   <tr>
     <th>Your skin product</th>
   </tr>
   </thead>
+  <!--Output found skin product result based HERE set by id-->
   <tbody id="skin_product">
-    <!-- javascript generated the skin product search result in "skin_product" id -->
   </tbody>
   <tr style="display:none;" id="noresults">
  </tr>
 </table>
 
+<!--Attempt of update feature-->
 <p>Update the Skin Product database:</p>
 
 <form id="myForm2" action="#">
@@ -56,23 +57,23 @@
 </form>
 
 <script>
-  // prepare HTML result container for skin product database
+  //Prepare output of data table & skin product recommendation on website 
   const resultContainer = document.getElementById("result");
   const skin_product_result = document.getElementById("skin_product");
 
-  // prepare URL's to allow easy switch from deployment and localhost
+  // Fetch data from deployed flask
   const url = "https://cskinp.duckdns.org/api/skintype"
   //const url = "https://flask.nighthawkcodingsociety.com/api/skintype"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 
-  // Define a global variable to hold all skin products information
+  // Define a global variable to hold all skin products information, the data table
   let allSkinProducts;
 
   // Load skin product info on page entry
   read_skintypes();
 
-  // Display Skin product Table, data is fetched from Backend Database
+  // Display skin product table, data is fetched from Backend Database
   function read_skintypes() {
     // prepare fetch options
     const read_options = {
@@ -102,7 +103,7 @@
             return;
         }
 
-        // valid response will have json data
+        //Valid response will have json data
         response.json().then(data => 
         {
             //console.log(data);
@@ -125,11 +126,13 @@
       const td = document.createElement("td");
       td.innerHTML = err;
       tr.appendChild(td);
+      //display data table 
       resultContainer.appendChild(tr);
     });
   }
 
-  function add_row(data) {
+  function add_row(data) 
+  {
     const tr = document.createElement("tr");
     const skintype = document.createElement("td");
     const moisturizer = document.createElement("td");
@@ -213,7 +216,7 @@
     })
   }
 
-  // This function will clear previous skin product search result
+  //Clears previous skin product search result
   function ClearSkinProductSearchResult() 
   {
     var row = skin_product_result.getElementsByTagName('tr');
@@ -225,7 +228,7 @@
     }
   }
 
-  // This function will clear previous skin product table
+  //This function will clear previous skin product table
   function ClearSkinProductTable() 
   {
     var row = resultContainer.getElementsByTagName('tr');
@@ -239,6 +242,7 @@
 
   function findSkinProduct() 
   {
+    //Take input of user skin type and product type and save into variable
     var skin_type_input = document.getElementById('skin_type');
     var product_type_input = document.getElementById('product_type');
 
@@ -252,32 +256,36 @@
     // Clear previous skin product search result first
     ClearSkinProductSearchResult();
 
-    for (const eachskinproduct of allSkinProducts)
+    for (const eachRow of allSkinProducts)
     {
-      // when user input equal to certain skin type, we will output the skin product that matche that skin type - shows in console.log
-      if (eachskinproduct["skin_type"] === skin_type)
+      //If the skin type in the row is equal to user skin type 
+      if (eachRow["skin_type"] === skin_type)
       {
-        console.log(eachskinproduct[product_type]);
-
-        if (eachskinproduct[product_type] !== "undefined" )
+        //debugging in console 
+        console.log(product_type);
+        console.log(eachRow[product_type]);
+      //is user puts in product type avaliable 
+        if ("serum" == product_type || "moisturizer" == product_type || "face cleanser" == product_type || "sunscreen" == product_type)
         {
-            td.innerHTML = eachskinproduct[product_type];
+            td.innerHTML = eachRow[product_type];
             tr.appendChild(td);
+            //display product recommendation in table 
             skin_product_result.appendChild(tr);
             // We found the skin product, we can return now
             return;
         }
-        else
+        else 
         {
-            //if skin product is not avaliable 
-            td.innerHTML = "Can not find your skin product, please try again!";
-            tr.appendChild(td);
-            skin_product_result.appendChild(tr);
-        }
+          //Handles error conditions: If product type is not avaliable 
+          td.innerHTML = "Can not find your skin product, please try again!";
+          tr.appendChild(td);
+          skin_product_result.appendChild(tr);
+          return;
+        }    
       }
     }
 
-    // If skin type is not avaliable 
+    //Handles error conditions: If skin type is not avaliable 
     td.innerHTML = "Can not find your skin type, please try again!";
     tr.appendChild(td);
     skin_product_result.appendChild(tr);
@@ -298,15 +306,16 @@
     const product_td = document.createElement("td");
     const tr = document.createElement("tr");
 
-    for (const eachskinproduct of allSkinProducts)
+    for (const eachRow of allSkinProducts)
     {
+
       // when user input equal to one of the product, we will perform update or add to this row
-      if (eachskinproduct["skin_type"] === skin_type)
+      if (eachRow["skin_type"] === skin_type)
       {
-        console.log(eachskinproduct[product_type]);
+        console.log(eachRow[product_type]);
 
         // We already have this product type, we will update the current one with the new one
-        if ( eachskinproduct[product_type] === product_type )
+        //if ( eachRow[product_type] === product_type )
         {
           product_td.innerHTML = product_name;
           tr.appendChild(product_td);
