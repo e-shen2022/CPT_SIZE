@@ -331,7 +331,8 @@ const table = document.getElementById('results');
 const productIn = document.getElementById('product');
 const allergyIn = document.getElementById('allergy');
 
-function allergyCheck() {
+function allergyCheck()
+{
     var allergyl = allergyIn.value.toLowerCase();
     var productl = productIn.value.toLowerCase();
     
@@ -345,13 +346,13 @@ function allergyCheck() {
                 console.log(`product found in row ${i}`);
                 var rowIndex = i;
                 var prodrow = table.rows[rowIndex];
-                var specrow = document.querySelector(`#results tr:nth-child(${i+1})`);
+                var specrow = document.querySelector('#results tr:nth-child(${i})');
                 var speccells = specrow.querySelectorAll("td");
 
                 for (var k = 0; k < speccells.length; k++) {
-                    const prodcell = prodrow.cells[k];
+                    const prodcell = prodrow.cells[i];
 
-                    if (speccells[k].innerText.toLowerCase().includes(allergyl)) {
+                    if (speccells[i].innerText.toLowerCase().includes(allergyl)) {
                         console.log('this product is unsafe, return to product selection');
                         return;
                     } else {
@@ -364,6 +365,6 @@ function allergyCheck() {
             }
         }
     }
-} 
+}  
             
 </script>
