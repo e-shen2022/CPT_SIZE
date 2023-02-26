@@ -55,7 +55,7 @@ function allergyCheck() {
                     console.log(speccells[k].innerText.toLowerCase());
                     console.log(allergyl);
 //how to make it check the right colum (k===1 not working)
-                    if (j === 1 && speccells[k].innerText.toLowerCase().includes(allergyl)) {
+                    if (k === 2 && speccells[k].innerText.toLowerCase().includes(allergyl)) {
                         console.log('this product is unsafe, return to product selection');
                         return;
                     } else {
