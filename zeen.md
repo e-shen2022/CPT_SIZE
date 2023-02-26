@@ -10,6 +10,7 @@
 </form>
 </body>
 
+<p id="out"></p>
 
 <p>Database API</p>
 
@@ -31,6 +32,7 @@
 const table = document.getElementById('results');
 const productIn = document.getElementById('product');
 const allergyIn = document.getElementById('allergy');
+const outputElement = document.querySelector('#out');
 
 function allergyCheck() {
     var allergyl = allergyIn.value.toLowerCase();
@@ -56,15 +58,18 @@ function allergyCheck() {
                     console.log(allergyl);
 //how to make it check the right colum (k===1 not working)
                     if (speccells[k].innerText.toLowerCase().includes(allergyl)) {
-                        document.write('this product is unsafe, return to product selection');
+                        console.log('this product is unsafe, return to product selection');
+                        outputElement.textContent = 'this product is unsafe, return to product selection';
                         return;
                     } else {
-                        document.write('this product is safe for use! enjoy!');
+                        console.log('this product is safe for use! enjoy!');
+                        outputElement.textContent = 'this product is safe for use! enjoy!';
                         return;
                     }
                 }
             } else {
-                document.write('product not in our database');
+                console.log('product not in our database');
+                outputElement.textContent = 'product not in our database';
             }
         }
     }
