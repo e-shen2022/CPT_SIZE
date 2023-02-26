@@ -55,7 +55,7 @@ function allergyCheck() {
                     console.log(speccells[k].innerText.toLowerCase());
                     console.log(allergyl);
 
-                    if (speccells[k].innerText.toLowerCase().includes(allergyl)) {
+                    if (k === 1 && speccells[k].innerText.toLowerCase().includes(allergyl)) {
                         console.log('this product is unsafe, return to product selection');
                         return;
                     } else {
