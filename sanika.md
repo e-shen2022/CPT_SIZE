@@ -459,3 +459,52 @@ function allergyCheck() {
 
             
 </script>
+
+
+
+//this works
+
+<script>
+const table = document.getElementById('results');
+const productIn = document.getElementById('product');
+const allergyIn = document.getElementById('allergy');
+
+function allergyCheck() {
+    var allergyl = allergyIn.value.toLowerCase();
+    var productl = productIn.value.toLowerCase();
+    
+    for (var i = 0; i < table.rows.length; i++) {
+        const row = table.rows[i];
+
+        for (var j = 0; j < row.cells.length; j++) {
+            const cell = row.cells[j];
+
+            if (cell.innerText.toLowerCase().includes(productl)) {
+                console.log(`product found in row ${i}`);
+                var rowIndex = i;
+                var prodrow = table.rows[rowIndex];
+                var specrow = document.querySelector(`#results tr:nth-child(${i+1})`);
+                var speccells = specrow.querySelectorAll("td");
+
+                for (var k = 1; k < speccells.length; k++) {
+                    const prodcell = prodrow.cells[k];
+//it is currently checking the wrong column
+                    console.log(speccells[k].innerText.toLowerCase());
+                    console.log(allergyl);
+//how to make it check the right colum (k===1 not working)
+                    if (speccells[k].innerText.toLowerCase().includes(allergyl)) {
+                        console.log('this product is unsafe, return to product selection');
+                        return;
+                    } else {
+                        console.log('this product is safe for use! enjoy!');
+                        return;
+                    }
+                }
+            } else {
+                console.log('product not in our database');
+            }
+        }
+    }
+}
+            
+</script>
