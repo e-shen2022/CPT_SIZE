@@ -3,16 +3,16 @@
 <html>
 <body>
 <form id="uinput" action="#">
-  Allergy: <input type="text" name="allergy"
+  Enter the ingredient you are allergy to: <input type="text" name="allergy"
   id="allergy"><br>
-  Product: <input type="text" name="product" id="product"><br>
+  Enter the product you were recommended: <input type="text" name="product" id="product"><br>
   <input type=button onclick="allergyCheck()" value="Submit">
 </form>
 </body>
 
 <p id="out"></p>
 
-<p>Database API</p>
+<p>Products We Recommend!</p>
 
 <table>
   <thead>
@@ -67,19 +67,19 @@ function allergyCheck() {
                     console.log(allergyl);
                     //if this cell includes string inputted by user, output of where safe or not is returned in html
                     if (speccells[k].innerText.toLowerCase().includes(allergyl)) {
-                        console.log('this product is unsafe, return to product selection');
-                        outputElement.textContent = 'this product is unsafe, return to product selection';
+                        console.log('This product is unsafe and contains the ingredient you are allergic to.');
+                        outputElement.textContent = 'This product is unsafe and contains the ingredient you are allergic to.';
                         return;
                     } else {
-                        console.log('this product is safe for use! enjoy!');
-                        outputElement.textContent = 'this product is safe for use! enjoy!';
+                        console.log('This product is safe for use! Enjoy!');
+                        outputElement.textContent = 'This product is safe for use! Enjoy!';
                         return;
                     }
                 }
             //will inform user if product is not in table/database yet
             } else {
-                console.log('product not in our database');
-                outputElement.textContent = 'product not in our database';
+                console.log('Product not in our database. Check spelling, or enter different product.');
+                outputElement.textContent = 'Product not in our database. Check spelling, or enter different product.';
             }
         }
     }
