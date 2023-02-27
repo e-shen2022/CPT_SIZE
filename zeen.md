@@ -1,4 +1,4 @@
-### Serum
+
 
 <html>
 <body>
@@ -29,34 +29,43 @@
 
 
 <script>
+//sets variables and connects userinput through id
 const table = document.getElementById('results');
 const productIn = document.getElementById('product');
 const allergyIn = document.getElementById('allergy');
 const outputElement = document.querySelector('#out');
 
+//creates function, which is activated by user clicking submit
 function allergyCheck() {
+
+    //changes user input to all lowercase (var allows for redefinition unlike const)
     var allergyl = allergyIn.value.toLowerCase();
     var productl = productIn.value.toLowerCase();
-    
+
+    //loops through rows in entire database table
     for (var i = 0; i < table.rows.length; i++) {
         const row = table.rows[i];
 
+        //loops through all cells in the table
         for (var j = 0; j < row.cells.length; j++) {
             const cell = row.cells[j];
 
+            //determines where the product is in the table
             if (cell.innerText.toLowerCase().includes(productl)) {
+                //outputs where product is present in console (for error management)
                 console.log(`product found in row ${i}`);
                 var rowIndex = i;
                 var prodrow = table.rows[rowIndex];
+                //defines row and column of product, so it can be looped through to find string of allergy
                 var specrow = document.querySelector(`#results tr:nth-child(${i+1})`);
                 var speccells = specrow.querySelectorAll("td");
 
+                //loop through specific row and column
                 for (var k = 1; k < speccells.length; k++) {
                     const prodcell = prodrow.cells[k];
-//it is currently checking the wrong column
                     console.log(speccells[k].innerText.toLowerCase());
                     console.log(allergyl);
-//how to make it check the right colum (k===1 not working)
+                    //if this cell includes string inputted by user, output of where safe or not is returned in html
                     if (speccells[k].innerText.toLowerCase().includes(allergyl)) {
                         console.log('this product is unsafe, return to product selection');
                         outputElement.textContent = 'this product is unsafe, return to product selection';
@@ -67,6 +76,7 @@ function allergyCheck() {
                         return;
                     }
                 }
+            //will inform user if product is not in table/database yet
             } else {
                 console.log('product not in our database');
                 outputElement.textContent = 'product not in our database';
