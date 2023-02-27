@@ -1,110 +1,18 @@
----
-title: Database CRUD Operations
-layout: default
-description: An advanced example of do database operation asynchronously between JavaScript and Backend Database. help
-image: /images/database.png
-
----
 
 
 <html>
-  <head>
-    <style>
-      tr.match {
-        background-color: maroon;
-      }
-    </style>
-  </head>
-  <body>
-
-
-<p>Enter product you want to find:</p>
-
-<input type="text" id="userInput" onkeyup="findAllergy()" placeholder="Search for product..">
+<body>
+<form id="uinput" action="#">
+  Enter the ingredient you are allergy to: <input type="text" name="allergy"
+  id="allergy"><br>
+  Enter the product you were recommended: <input type="text" name="product" id="product"><br>
+  <input type=button onclick="allergyCheck()" value="Submit">
+</form>
+</body>
 
 <p id="out"></p>
 
-<script>
-function findAllergy() {
-  // Get the table element and search input element
-var table = document.getElementById("results");
-var userInput = document.getElementById("userInput");
-
-
-// Listen for changes to the search input element
-userInput.addEventListener("input", function() {
-  // Get the value of the search input
-  var searchString = userInput.value.trim();
-
-  // Initialize array to store row numbers of matching rows
-  var matchingRows = [];
-
-  // Loop through all table rows and cells
-  for (var i = 0; i < table.rows.length; i++) {
-    var row = table.rows[i];
-    var matchFound = false;
-
-    for (var j = 0; j < table.rows[i].cells.length; j++) {
-      // Check if the cell contains the desired string
-      if (table.rows[i].cells[j].textContent.includes(searchString)) {
-        // If the string is found, add the row number to the matchingRows array
-        matchingRows.push(i);
-        matchFound = true;
-        break;
-      }
-    }
-
-// new
-    if (matchFound) {
-      row.classList.add("match");
-    } else {
-      row.classList.remove("match")
-    }
-    }
-//endnew
-  
-
-  // Display which row(s) contain the search string
-  var out = document.getElementById("out");
-  if (matchingRows.length > 0) {
-    out.textContent = "The string '" + searchString + "' was found in row(s): " + matchingRows.join(", ");
-  } else {
-    out.textContent = "The string '" + searchString + "' was not found in any row.";
-  }
-});
-
-}
-</script>
-</body>
-</html>
-
-
-<script>
-function searchProd() {
-  // Declare variables
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("results");
-  tr = table.getElementsByTagName("tr");
-
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-</script>
-
-
-<p>Database API</p>
+<p>Products We Recommend!</p>
 
 <table>
   <thead>
@@ -119,6 +27,68 @@ function searchProd() {
 </table>
 
 
+
+<script>
+//sets variables and connects userinput through id
+const table = document.getElementById('results');
+const productIn = document.getElementById('product');
+const allergyIn = document.getElementById('allergy');
+const outputElement = document.querySelector('#out');
+
+//creates function, which is activated by user clicking submit
+function allergyCheck() {
+
+    //changes user input to all lowercase (var allows for redefinition unlike const)
+    var allergyl = allergyIn.value.toLowerCase();
+    var productl = productIn.value.toLowerCase();
+
+    //loops through rows in entire database table
+    for (var i = 0; i < table.rows.length; i++) {
+        const row = table.rows[i];
+
+        //loops through all cells in the table
+        for (var j = 0; j < row.cells.length; j++) {
+            const cell = row.cells[j];
+
+            //determines where the product is in the table
+            if (cell.innerText.toLowerCase().includes(productl)) {
+                //outputs where product is present in console (for error management)
+                console.log(`product found in row ${i}`);
+                var rowIndex = i;
+                var prodrow = table.rows[rowIndex];
+                //defines row and column of product, so it can be looped through to find string of allergy
+                var specrow = document.querySelector(`#results tr:nth-child(${i+1})`);
+                var speccells = specrow.querySelectorAll("td");
+
+                //loop through specific row and column
+                for (var k = 1; k < speccells.length; k++) {
+                    const prodcell = prodrow.cells[k];
+                    console.log(speccells[k].innerText.toLowerCase());
+                    console.log(allergyl);
+                    //if this cell includes string inputted by user, output of where safe or not is returned in html
+                    if (speccells[k].innerText.toLowerCase().includes(allergyl)) {
+                        console.log('This product is unsafe and contains the ingredient you are allergic to.');
+                        outputElement.textContent = 'This product is unsafe and contains the ingredient you are allergic to.';
+                        return;
+                    } else {
+                        console.log('This product is safe for use! Enjoy!');
+                        outputElement.textContent = 'This product is safe for use! Enjoy!';
+                        return;
+                    }
+                }
+            //will inform user if product is not in table/database yet
+            } else {
+                console.log('Product not in our database. Check spelling, or enter different product.');
+                outputElement.textContent = 'Product not in our database. Check spelling, or enter different product.';
+            }
+        }
+    }
+}
+            
+</script>
+
+
+
 <script>
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("results");
@@ -127,6 +97,8 @@ function searchProd() {
   const url = "https://cskinp.duckdns.org/api/clients"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
+
+  let allProducts;
 
   // Load users on page entry
   read_clients();
@@ -162,8 +134,10 @@ function searchProd() {
         }
 
         // valid response will have json data
-        response.json().then(data => {
-            console.log(data);
+        response.json().then(data => 
+        {
+            allProducts = data
+            // console.log(data);
             for (let row in data) {
               console.log(data[row]);
               add_row(data[row]);
@@ -239,272 +213,4 @@ function searchProd() {
     resultContainer.appendChild(tr);
   }
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Serum
-
-<html>
-<body>
-<form id="uinput" action="#">
-  Allergy: <input type="text" name="allergy"
-  id="allergy"><br>
-  Product: <input type="text" name="product" id="product"><br>
-  <input type=button onclick="allergyCheck()" value="Submit">
-</form>
-</body>
-
-
-
-<p>Database API</p>
-
-<table>
-  <thead>
-  <tr>
-    <th>Product</th>
-    <th>Ingredients</th>
-  </tr>
-  </thead>
-  <tbody id="results">
-    <!-- javascript generated data -->
-  </tbody>
-</table>
-
-
-<script>
-const table = document.getElementById('results');
-const productIn = document.getElementById('product');
-const allergyIn = document.getElementById('allergy');
-
-function allergyCheck()
-{
-    var allergyl = allergyIn.value.toLowerCase();
-    var productl = productIn.value.toLowerCase();
-    
-    for (var i = 0; i < table.rows.length; i++) {
-        const row = table.rows[i];
-
-        for (var j = 0; j < row.cells.length; j++) {
-            const cell = row.cells[j];
-
-            if (cell.innerText.toLowerCase().includes(productl)) {
-                console.log(`product found in row ${i}`);
-                var rowIndex = i;
-                var prodrow = table.rows[rowIndex];
-
-                for (let b = 0; b < prodrow.cells.length; b++) {
-                    const prodcell = prodrow.cells[b];
-
-                    if (prodcell.innerText.toLowerCase().includes(allergy)) {
-                        console.log('this product is unsafe, return to product selection');
-                        return;
-                    } else {
-                        console.log('this product is safe for use! enjoy!');
-                        return;
-                    }
-                }
-            } else {
-                console.log('product not in our database');
-            }
-        }
-    }
-}  
-            
-</script>
-
-
-
-
-<script>
-const table = document.getElementById('results');
-const productIn = document.getElementById('product');
-const allergyIn = document.getElementById('allergy');
-
-function allergyCheck()
-{
-    var allergyl = allergyIn.value.toLowerCase();
-    var productl = productIn.value.toLowerCase();
-    
-    for (var i = 0; i < table.rows.length; i++) {
-        const row = table.rows[i];
-
-        for (var j = 0; j < row.cells.length; j++) {
-            const cell = row.cells[j];
-
-            if (cell.innerText.toLowerCase().includes(productl)) {
-                console.log(`product found in row ${i}`);
-                var rowIndex = i;
-                var prodrow = table.rows[rowIndex];
-                var specrow = document.querySelector('#results tr:nth-child(${i})');
-                var speccells = specrow.querySelectorAll("td");
-
-                for (var k = 0; k < speccells.length; k++) {
-                    const prodcell = prodrow.cells[i];
-
-                    if (speccells[i].innerText.toLowerCase().includes(allergyl)) {
-                        console.log('this product is unsafe, return to product selection');
-                        return;
-                    } else {
-                        console.log('this product is safe for use! enjoy!');
-                        return;
-                    }
-                }
-            } else {
-                console.log('product not in our database');
-            }
-        }
-    }
-}  
-            
-</script>
-
-
-//try individual column
-
-<script>
-const table = document.getElementById('results');
-const productIn = document.getElementById('product');
-const allergyIn = document.getElementById('allergy');
-
-function allergyCheck() {
-    var allergyl = allergyIn.value.toLowerCase();
-    var productl = productIn.value.toLowerCase();
-    
-    for (var i = 0; i < table.rows.length; i++) {
-        const row = table.rows[i];
-
-        for (var j = 0; j < row.cells.length; j++) {
-            const cell = row.cells[j];
-
-            if (cell.innerText.toLowerCase().includes(productl)) {
-                console.log(`product found in row ${i}`);
-                var rowIndex = i;
-                var prodrow = table.rows[rowIndex];
-                var specrow = document.querySelector(`#results tr:nth-child(${i+1})`);
-                var speccells = specrow.querySelectorAll("td");
-
-                for (var k = 0; k < speccells.length; k++) {
-                    const prodcell = prodrow.cells[k];
-//it is currently checking the wrong column
-                    console.log(speccells[k].innerText.toLowerCase());
-                    console.log(allergyl);
-//how to make it check the right colum (k===1 not working)
-                    if (speccells[k].innerText.toLowerCase().includes(allergyl)) {
-                        console.log('this product is unsafe, return to product selection');
-                        return;
-                    } else {
-                        console.log('this product is safe for use! enjoy!');
-                        return;
-                    }
-                }
-            } else {
-                console.log('product not in our database');
-            }
-        }
-    }
-}
-            
-</script>
-
-
-
-//diff column try
-<script>
-const table = document.getElementById('results');
-const productIn = document.getElementById('product');
-const allergyIn = document.getElementById('allergy');
-
-function allergyCheck() {
-    var allergyl = allergyIn.value.toLowerCase();
-    var productl = productIn.value.toLowerCase();
-    
-    for (var i = 0; i < table.rows.length; i++) {
-        const row = table.rows[i];
-
-        for (var j = 0; j < row.cells.length; j++) {
-            const cell = row.cells[j];
-
-            if (cell.innerText.toLowerCase().includes(productl)) {
-                console.log(`product found in row ${i}`);
-                var specrow = document.querySelector(`#results tr:nth-child(${i})`);
-                var speccell = specrow.cell[1]
-//it is currently checking the wrong column
-                console.log(speccell.innerText.toLowerCase());
-                console.log(allergyl);
-//how to make it check the right colum (k===1 not working)
-                if (speccell.innerText.toLowerCase().includes(allergyl)) {
-                    console.log('this product is unsafe, return to product selection');
-                    return;
-                } else {
-                    console.log('this product is safe for use! enjoy!');
-                    return;
-                }
-            } else {
-                console.log('product not in our database');
-            }
-        }
-    }
-}
-
-            
-</script>
-
-
-
-//this works
-
-<script>
-const table = document.getElementById('results');
-const productIn = document.getElementById('product');
-const allergyIn = document.getElementById('allergy');
-
-function allergyCheck() {
-    var allergyl = allergyIn.value.toLowerCase();
-    var productl = productIn.value.toLowerCase();
-    
-    for (var i = 0; i < table.rows.length; i++) {
-        const row = table.rows[i];
-
-        for (var j = 0; j < row.cells.length; j++) {
-            const cell = row.cells[j];
-
-            if (cell.innerText.toLowerCase().includes(productl)) {
-                console.log(`product found in row ${i}`);
-                var rowIndex = i;
-                var prodrow = table.rows[rowIndex];
-                var specrow = document.querySelector(`#results tr:nth-child(${i+1})`);
-                var speccells = specrow.querySelectorAll("td");
-
-                for (var k = 1; k < speccells.length; k++) {
-                    const prodcell = prodrow.cells[k];
-//it is currently checking the wrong column
-                    console.log(speccells[k].innerText.toLowerCase());
-                    console.log(allergyl);
-//how to make it check the right colum (k===1 not working)
-                    if (speccells[k].innerText.toLowerCase().includes(allergyl)) {
-                        console.log('this product is unsafe, return to product selection');
-                        return;
-                    } else {
-                        console.log('this product is safe for use! enjoy!');
-                        return;
-                    }
-                }
-            } else {
-                console.log('product not in our database');
-            }
-        }
-    }
-}
-            
-</script>
+</html>
